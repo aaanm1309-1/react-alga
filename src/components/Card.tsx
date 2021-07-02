@@ -1,6 +1,7 @@
 // import { PropsWithChildren, ReactNode } from "react"
 import { PropsWithChildren } from "react"
-import './Card.css';
+// import './Card.css';
+import * as C from './Card.styles'
 
 type CardProps = 
       PropsWithChildren< {
@@ -11,8 +12,8 @@ type CardProps =
 
 
 export default function Card(props: CardProps){
-  return <div className={`Card ${props.align || 'center'}`}>
-      <div>{props.title}</div>
+  return <C.Wrapper align={props.align}>
+      <C.Title>{props.title}</C.Title>
       { props.children}
-  </div>
+  </C.Wrapper>
 }
