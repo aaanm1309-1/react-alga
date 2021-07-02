@@ -13,8 +13,16 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Card title='Cartão Controle'>
-          <Post post={post} totalComements={12}/>
+      <Card title='Cartão Controle' >
+          <Post post={post}  totalComements={12}/>
+        </Card>
+        <br />
+        <Card title='Cartão Controle' align='right'>
+          <Post post={post}  totalComements={12}/>
+        </Card>
+        <br />
+        <Card title='Cartão Controle' align='left'>
+          <Post post={post}  totalComements={12}/>
         </Card>
         <br />
         <img src={logo} className="App-logo" alt="logo" />
