@@ -6,7 +6,8 @@ interface ButtonProps {
 }
 
 interface ButtonState {
-  alreadyClicked: boolean
+  alreadyClicked: boolean,
+  timerId?: NodeJS.Timeout
 }
 
 
@@ -21,24 +22,22 @@ class Button extends
   }
 
   componentDidMount(){
-    setTimeout(() => {
-      this.setState({
+    const timerId = setInterval(() => {
+      console.log("Estou rodando")
+      this.setState({ 
         alreadyClicked:  false
       })
     },5000)
+    this.setState({timerId})
   }
 
-  componentDidUpdate(
-    prevProps: ButtonProps,
-    prevState: ButtonState){
+  componentWillUnmount(){
+    console.log("Button será Desmontado")
+    if (this.state.timerId) {
+      console.log("Apaguei o Intervalo com certeza ")
+      clearInterval(this.state.timerId);
+    }
 
-      //prevState - anterior
-      //this.state - atual
-    // setTimeout(() => {
-    //   this.setState({
-    //     alreadyClicked:  false
-    //   })
-    // },5000)
   }
 
   render() {
