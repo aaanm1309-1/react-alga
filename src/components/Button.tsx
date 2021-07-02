@@ -28,6 +28,19 @@ class Button extends
     },5000)
   }
 
+  componentDidUpdate(
+    prevProps: ButtonProps,
+    prevState: ButtonState){
+
+      //prevState - anterior
+      //this.state - atual
+    // setTimeout(() => {
+    //   this.setState({
+    //     alreadyClicked:  false
+    //   })
+    // },5000)
+  }
+
   render() {
     // console.log(this.props)
     return <button 
