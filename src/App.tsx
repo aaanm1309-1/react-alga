@@ -17,14 +17,13 @@ function App() {
           <Post post={post}  totalComements={12}/>
         </Card>
         <br />
-        <Card title='Cartão Controle' align='right'>
+        <Card title='Cartão Controle' 
+            align='right'
+            initializeClicked={true}>
           <Post post={post}  totalComements={12}/>
         </Card>
         <br />
-        <Card title='Cartão Controle' align='left'>
-          <Post post={post}  totalComements={12}/>
-        </Card>
-        <br />
+
         <img src={logo} className="App-logo" alt="logo" />
         
       </header>
