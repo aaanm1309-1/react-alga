@@ -1,44 +1,78 @@
 import logo from './logo.svg';
 import './App.css';
-import useCounter from './hooks/useCounter';
-import PeopleList from './compHook/PeopleList';
-import { useEffect, useRef } from 'react';
+import { useReducer } from 'react';
+
+
+interface InitialState {
+  count: number;
+}
+
+type Action = {
+  type: 'INCREMENT',
+  payload: number 
+  } | 
+  {
+  type: |'DECREMENT'
+  }
+
+const initialState: InitialState = {
+  count: 1
+}
+
+function reducer (state: InitialState, action: Action) : InitialState {
+  console.log(action)
+
+  if (action.type === 'INCREMENT'){
+    return {
+      count: state.count + action.payload
+    }
+   
+  } else if (action.type === 'DECREMENT'){
+    return {
+      count: state.count - 1
+    }
+  }
+  return {
+    count: state.count 
+  }
+
+}
+
 
 function App() {
 
-  const number = useCounter(9)
+  const [estado, dispatch] = useReducer(reducer, initialState)
 
-  const counter = useRef(2)
-
-  const div1 = useRef<HTMLDivElement>(null)
-
-
-  useEffect(() => {
-    setTimeout(() => {
-      counter.current = 6
-      console.log('o valour de counter foi alterado')
-      console.log(div1.current)
-      if (div1.current) {
-        div1.current.style.backgroundColor ='green'
-      }
-
-    },2000)
-
-  },[counter])
-
-  
- 
 
  
   return (
-    <div className="App2" ref={div1}>
+    <div className="App2" >
       <header className="App-header">
-        {number}
-        <div style={{backgroundColor: 'peachpuff'}}>
-          {counter.current}
+
+        <div style={{backgroundColor: 'green'}}>
+          { estado.count }
         </div>
-        <PeopleList/>
-        <PeopleList/>
+
+        <button
+          onClick={() =>{
+            dispatch({
+              type: 'INCREMENT',
+              payload: 2
+            })
+          }}
+        >
+            Acrescentar
+        </button>
+        <button
+          onClick={() =>{
+            dispatch({
+              type: 'DECREMENT'
+          })
+          }}
+        >
+            Diminuir
+        </button>
+       
         <img src={logo} className="App-logo" alt="logo" />
         
       </header>
