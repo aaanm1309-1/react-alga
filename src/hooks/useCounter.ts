@@ -9,7 +9,7 @@ export default function useCounter(numEntrada: number = 1){
       setNumero(numero + 1)
     },5000)
   
-  },[])
+  },)
 
 
   return numero
