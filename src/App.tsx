@@ -5,7 +5,7 @@ import PeopleList from './compHook/PeopleList';
 
 function App() {
 
-  const number = useCounter()
+  const number = useCounter(9)
  
 
  
